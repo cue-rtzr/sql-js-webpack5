@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 const path = require("path");
 
 module.exports = {
@@ -11,6 +12,11 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       title: "Output Management",
+    }),
+    new CopyPlugin({
+      patterns: [
+        { from: "node_modules/sql.js/dist/sql-wasm.wasm", to: "static/js/" },
+      ],
     }),
   ],
   devServer: {

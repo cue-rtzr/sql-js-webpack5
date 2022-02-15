@@ -2,15 +2,12 @@ import initSqlJs from "sql.js";
 
 function component() {
   const element = document.createElement("div");
-
-  // Lodash, currently included via a script, is required for this line to work
   element.innerHTML = "index.js hello";
-
   return element;
 }
-
 document.body.appendChild(component());
 
+// test sql.js
 (async () => {
   try {
     const SQL = await initSqlJs({
@@ -18,7 +15,8 @@ document.body.appendChild(component());
       // This way, we don't need to deal with webpack
       locateFile: (file) =>
         // `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.6.1/dist/${file}`,
-        "https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.6.1/sql-wasm-debug.wasm",
+        // "https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.6.1/sql-wasm-debug.wasm",
+        `static/js/${file}`,
     });
     console.log(new SQL.Database());
   } catch (error) {
