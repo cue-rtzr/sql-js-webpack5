@@ -30,8 +30,4 @@ module.exports = {
       fs: false,
     },
   },
-  experiments: {
-    asyncWebAssembly: true,
-    syncWebAssembly: true,
-  },
 };
